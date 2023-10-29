@@ -616,9 +616,10 @@ class PDF(FPDF):
 		self.multi_cell(0, 10, answer)
 		self.ln(10)
 
-	def chapter(self, title):
+	def chapter(self, title, answer):
 		self.add_page()
 		self.chapter_title(title)
+		self.chapter_body(answer)
 
 
 if (
@@ -720,7 +721,7 @@ if (
 					print(question)
 					print(answer)
 					print("-----")
-					pdf.chapter(f'{question}\n')
+					pdf.chapter(f'Question {i+1}', f'{question}\n')
 					pdf.chapter_body(f"{answer}\n")	
 
 				pdf.output('assignment_answers.pdf')
